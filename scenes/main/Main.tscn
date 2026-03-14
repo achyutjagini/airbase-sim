@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dce51f8wihk7g" path="res://assets/europe_map.png" id="2_gyg6b"]
 [ext_resource type="PackedScene" uid="uid://n65o6hhk252a" path="res://scenes/entities/Base.tscn" id="3_gyg6b"]
 [ext_resource type="Script" uid="uid://v0xu55ywse24" path="res://scripts/ui/hud.gd" id="4_dc040"]
+[ext_resource type="PackedScene" uid="uid://command_center_01" path="res://scenes/ui/CommandCenter.tscn" id="5_cc01"]
 
 [node name="Main" type="Node2D" unique_id=616560758]
 
@@ -63,12 +64,22 @@ position = Vector2(576, 324)
 [node name="HUD" type="CanvasLayer" parent="." unique_id=8856624]
 script = ExtResource("4_dc040")
 
-[node name="AircraftPanel" type="Panel" parent="HUD" unique_id=681215328]
+[node name="TabContainer" type="TabContainer" parent="HUD" unique_id=1111111101]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+tab_alignment = 0
+
+[node name="Airbase Sim" type="Control" parent="HUD/TabContainer" unique_id=1111111102]
+layout_mode = 2
+
+[node name="AircraftPanel" type="Panel" parent="HUD/TabContainer/Airbase Sim" unique_id=681215328]
+layout_mode = 0
 offset_left = 584.0
 offset_right = 953.0
 offset_bottom = 141.0
 
-[node name="AircraftLabel" type="Label" parent="HUD/AircraftPanel" unique_id=697027117]
+[node name="AircraftLabel" type="Label" parent="HUD/TabContainer/Airbase Sim/AircraftPanel" unique_id=697027117]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
@@ -76,13 +87,14 @@ offset_right = 188.0
 offset_bottom = 33.0
 text = "AIRCRAFT"
 
-[node name="QueuePanel" type="Panel" parent="HUD" unique_id=138632068]
+[node name="QueuePanel" type="Panel" parent="HUD/TabContainer/Airbase Sim" unique_id=138632068]
+layout_mode = 0
 offset_left = 582.0
 offset_top = 382.0
 offset_right = 880.0
 offset_bottom = 646.0
 
-[node name="QueueLabel" type="Label" parent="HUD/QueuePanel" unique_id=1196028513]
+[node name="QueueLabel" type="Label" parent="HUD/TabContainer/Airbase Sim/QueuePanel" unique_id=1196028513]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
@@ -90,45 +102,47 @@ offset_right = 189.0
 offset_bottom = 210.0
 text = "QUEUES"
 
-[node name="MissionPanel" type="Panel" parent="HUD" unique_id=796898311]
+[node name="MissionPanel" type="Panel" parent="HUD/TabContainer/Airbase Sim" unique_id=796898311]
+layout_mode = 0
 offset_left = 1.0
 offset_top = 225.0
 offset_right = 583.0
 offset_bottom = 352.0
 
-[node name="MissionLabel" type="Label" parent="HUD/MissionPanel" unique_id=46069542]
+[node name="MissionLabel" type="Label" parent="HUD/TabContainer/Airbase Sim/MissionPanel" unique_id=46069542]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="MissionControlPanel" type="Panel" parent="HUD" unique_id=1582149465]
+[node name="MissionControlPanel" type="Panel" parent="HUD/TabContainer/Airbase Sim" unique_id=1582149465]
+layout_mode = 0
 offset_left = 956.0
 offset_top = 2.0
 offset_right = 1151.0
 offset_bottom = 182.0
 
-[node name="MissionTypePicker" type="OptionButton" parent="HUD/MissionControlPanel" unique_id=748812837]
+[node name="MissionTypePicker" type="OptionButton" parent="HUD/TabContainer/Airbase Sim/MissionControlPanel" unique_id=748812837]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 190.0
 offset_bottom = 40.0
 
-[node name="AircraftTypePicker" type="OptionButton" parent="HUD/MissionControlPanel" unique_id=1806800032]
+[node name="AircraftTypePicker" type="OptionButton" parent="HUD/TabContainer/Airbase Sim/MissionControlPanel" unique_id=1806800032]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 50.0
 offset_right = 190.0
 offset_bottom = 80.0
 
-[node name="AircraftCountSpinBox" type="SpinBox" parent="HUD/MissionControlPanel" unique_id=1970433926]
+[node name="AircraftCountSpinBox" type="SpinBox" parent="HUD/TabContainer/Airbase Sim/MissionControlPanel" unique_id=1970433926]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 90.0
 offset_right = 96.5
 offset_bottom = 121.0
 
-[node name="PlaceMissionButton" type="Button" parent="HUD/MissionControlPanel" unique_id=1175178979]
+[node name="PlaceMissionButton" type="Button" parent="HUD/TabContainer/Airbase Sim/MissionControlPanel" unique_id=1175178979]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 130.0
@@ -136,7 +150,7 @@ offset_right = 190.0
 offset_bottom = 160.0
 text = "Place Mission On Map"
 
-[node name="MissionModeLabel" type="Label" parent="HUD/MissionControlPanel" unique_id=1711899359]
+[node name="MissionModeLabel" type="Label" parent="HUD/TabContainer/Airbase Sim/MissionControlPanel" unique_id=1711899359]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 10.0
@@ -144,20 +158,21 @@ offset_right = 310.0
 offset_bottom = 110.0
 text = "Idle"
 
-[node name="AircraftControlPanel" type="Panel" parent="HUD" unique_id=495255655]
+[node name="AircraftControlPanel" type="Panel" parent="HUD/TabContainer/Airbase Sim" unique_id=495255655]
+layout_mode = 0
 offset_left = 584.0
 offset_top = 296.0
 offset_right = 735.0
 offset_bottom = 385.0
 
-[node name="AircraftSpawnPicker" type="OptionButton" parent="HUD/AircraftControlPanel" unique_id=424941839]
+[node name="AircraftSpawnPicker" type="OptionButton" parent="HUD/TabContainer/Airbase Sim/AircraftControlPanel" unique_id=424941839]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 110.0
 offset_bottom = 40.0
 
-[node name="AddAirCraftButton" type="Button" parent="HUD/AircraftControlPanel" unique_id=2126006310]
+[node name="AddAirCraftButton" type="Button" parent="HUD/TabContainer/Airbase Sim/AircraftControlPanel" unique_id=2126006310]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 50.0
@@ -165,16 +180,20 @@ offset_right = 111.0
 offset_bottom = 81.0
 text = "Add Aircraft"
 
-[node name="FleetPanel" type="Panel" parent="HUD" unique_id=2038202781]
+[node name="FleetPanel" type="Panel" parent="HUD/TabContainer/Airbase Sim" unique_id=2038202781]
+layout_mode = 0
 offset_left = 586.0
 offset_top = 142.0
 offset_right = 871.0
 offset_bottom = 295.0
 
-[node name="FleetLabel" type="Label" parent="HUD/FleetPanel" unique_id=470133964]
+[node name="FleetLabel" type="Label" parent="HUD/TabContainer/Airbase Sim/FleetPanel" unique_id=470133964]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "FLEET"
+
+[node name="Command Center" parent="HUD/TabContainer" unique_id=1111111103 instance=ExtResource("5_cc01")]
+layout_mode = 2
 
 [editable path="World/Base"]

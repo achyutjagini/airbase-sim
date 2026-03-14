@@ -15,6 +15,10 @@ run/main_scene="uid://c0ge611d3j6f8"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[dotnet]
+
+project/assembly_name="AirbaseSim"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

@@ -1,0 +1,257 @@
+[gd_scene format=3 uid="uid://command_center_01"]
+
+[ext_resource type="Script" uid="uid://cmd_center_script" path="res://scripts/ui/command_center.gd" id="1_cc"]
+[ext_resource type="Script" uid="uid://life_chart_draw" path="res://scripts/ui/life_chart_draw.gd" id="2_cc"]
+
+[node name="CommandCenter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_cc")
+
+[node name="Modal" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="ModalBG" type="ColorRect" parent="Modal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.88)
+
+[node name="ModalContent" type="VBoxContainer" parent="Modal"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 40.0
+offset_right = 700.0
+offset_bottom = 420.0
+
+[node name="TitleLabel" type="Label" parent="Modal/ModalContent"]
+layout_mode = 2
+text = "ATO PLANERING"
+add_theme_font_size_override("font_size") = 14
+
+[node name="TaskPicker" type="OptionButton" parent="Modal/ModalContent"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 36)
+
+[node name="SizePicker" type="OptionButton" parent="Modal/ModalContent"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 36)
+
+[node name="StartSpin" type="SpinBox" parent="Modal/ModalContent"]
+layout_mode = 2
+min_value = 0.0
+max_value = 23.0
+value = 10.0
+custom_minimum_size = Vector2(0, 36)
+
+[node name="SpecLabel" type="Label" parent="Modal/ModalContent"]
+layout_mode = 2
+text = "BEHOV: ..."
+
+[node name="SuggestLabel" type="Label" parent="Modal/ModalContent"]
+layout_mode = 2
+text = "FORSLAG: ..."
+
+[node name="HBoxBtns" type="HBoxContainer" parent="Modal/ModalContent"]
+layout_mode = 2
+
+[node name="SaveBtn" type="Button" parent="Modal/ModalContent/HBoxBtns"]
+layout_mode = 2
+text = "RESERVERA RESURSER"
+size_flags_horizontal = 3
+
+[node name="CancelBtn" type="Button" parent="Modal/ModalContent/HBoxBtns"]
+layout_mode = 2
+text = "AVBRYT"
+size_flags_horizontal = 3
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+
+[node name="TopStatus" type="PanelContainer" parent="VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+
+[node name="HBox" type="HBoxContainer" parent="VBox/TopStatus"]
+layout_mode = 2
+
+[node name="TimeBlock" type="HBoxContainer" parent="VBox/TopStatus/HBox"]
+layout_mode = 2
+
+[node name="SimLabel" type="Label" parent="VBox/TopStatus/HBox/TimeBlock"]
+layout_mode = 2
+text = "SIM-TID:"
+
+[node name="ClockLabel" type="Label" parent="VBox/TopStatus/HBox/TimeBlock"]
+layout_mode = 2
+text = "08:00"
+add_theme_color_override("font_color") = Color(0, 1, 0.254902, 1)
+add_theme_font_size_override("font_size") = 16
+
+[node name="DayLabel" type="Label" parent="VBox/TopStatus/HBox/TimeBlock"]
+layout_mode = 2
+text = "DAG: 1"
+add_theme_color_override("font_color") = Color(0, 1, 0.254902, 1)
+add_theme_font_size_override("font_size") = 16
+
+[node name="Resources" type="HBoxContainer" parent="VBox/TopStatus/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FuelLabel" type="Label" parent="VBox/TopStatus/HBox/Resources"]
+layout_mode = 2
+text = "FUEL: 50000"
+add_theme_font_size_override("font_size") = 11
+
+[node name="Spacer1" type="Control" parent="VBox/TopStatus/HBox/Resources"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 0)
+size_flags_horizontal = 3
+
+[node name="AmmoLabel" type="Label" parent="VBox/TopStatus/HBox/Resources"]
+layout_mode = 2
+text = "AMMO: 120"
+add_theme_font_size_override("font_size") = 11
+
+[node name="Spacer2" type="Control" parent="VBox/TopStatus/HBox/Resources"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 0)
+size_flags_horizontal = 3
+
+[node name="UELabel" type="Label" parent="VBox/TopStatus/HBox/Resources"]
+layout_mode = 2
+text = "UE: 5"
+add_theme_font_size_override("font_size") = 11
+
+[node name="Spacer3" type="Control" parent="VBox/TopStatus/HBox/Resources"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 0)
+size_flags_horizontal = 3
+
+[node name="PilotsLabel" type="Label" parent="VBox/TopStatus/HBox/Resources"]
+layout_mode = 2
+text = "PILOTS: 18"
+add_theme_font_size_override("font_size") = 11
+
+[node name="AdvBtn" type="Button" parent="VBox/TopStatus/HBox"]
+layout_mode = 2
+text = "NASTA SPELVARV (+1H)"
+
+[node name="Main" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBox" type="HBoxContainer" parent="VBox/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_horizontal = 3
+
+[node name="LeftPanel" type="VBoxContainer" parent="VBox/Main/HBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 0)
+size_flags_horizontal = 0
+
+[node name="LeftHeader" type="Label" parent="VBox/Main/HBox/LeftPanel"]
+layout_mode = 2
+text = "FLEET STATUS // SLITKURVA"
+add_theme_color_override("font_color") = Color(0, 0.952941, 1, 1)
+add_theme_font_size_override("font_size") = 10
+
+[node name="FleetList" type="RichTextLabel" parent="VBox/Main/HBox/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = ""
+scroll_active = true
+
+[node name="CenterPanel" type="VBoxContainer" parent="VBox/Main/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CalHeader" type="Label" parent="VBox/Main/HBox/CenterPanel"]
+layout_mode = 2
+text = "STRATEGISK OVERSIKT (14 DAGAR)"
+add_theme_color_override("font_color") = Color(0, 0.952941, 1, 1)
+add_theme_font_size_override("font_size") = 10
+
+[node name="ScrollCenter" type="ScrollContainer" parent="VBox/Main/HBox/CenterPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterVBox" type="VBoxContainer" parent="VBox/Main/HBox/CenterPanel/ScrollCenter"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CalGrid" type="GridContainer" parent="VBox/Main/HBox/CenterPanel/ScrollCenter/CenterVBox"]
+layout_mode = 2
+columns = 7
+
+[node name="TimelineHeader" type="Label" parent="VBox/Main/HBox/CenterPanel/ScrollCenter/CenterVBox"]
+layout_mode = 2
+text = "AKTUELLT ATO (24H TIMELINE)"
+add_theme_color_override("font_color") = Color(0, 0.952941, 1, 1)
+add_theme_font_size_override("font_size") = 10
+
+[node name="Timeline" type="HBoxContainer" parent="VBox/Main/HBox/CenterPanel/ScrollCenter/CenterVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+
+[node name="ChartHeader" type="Label" parent="VBox/Main/HBox/CenterPanel/ScrollCenter/CenterVBox"]
+layout_mode = 2
+text = "REMAINING LIFE VS CALENDAR TIME"
+add_theme_color_override("font_color") = Color(0, 0.952941, 1, 1)
+add_theme_font_size_override("font_size") = 10
+
+[node name="LifeChart" type="Control" parent="VBox/Main/HBox/CenterPanel/ScrollCenter/CenterVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 220)
+size_flags_vertical = 3
+script = ExtResource("2_cc")
+
+[node name="RightPanel" type="VBoxContainer" parent="VBox/Main/HBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 0)
+size_flags_horizontal = 0
+
+[node name="MROHeader" type="Label" parent="VBox/Main/HBox/RightPanel"]
+layout_mode = 2
+text = "VERKSTAD (MRO)"
+add_theme_color_override("font_color") = Color(0, 0.952941, 1, 1)
+add_theme_font_size_override("font_size") = 10
+
+[node name="MaintLabel" type="RichTextLabel" parent="VBox/Main/HBox/RightPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 80)
+bbcode_enabled = true
+text = "TOMT"
+
+[node name="LogHeader" type="Label" parent="VBox/Main/HBox/RightPanel"]
+layout_mode = 2
+text = "HANDELSELOGG"
+add_theme_color_override("font_color") = Color(0, 0.952941, 1, 1)
+add_theme_font_size_override("font_size") = 10
+
+[node name="LogLabel" type="RichTextLabel" parent="VBox/Main/HBox/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = ""
+scroll_active = true
+
+[node name="PlunderBtn" type="Button" parent="VBox/Main/HBox/RightPanel"]
+layout_mode = 2
+text = "PLUNDRA UE-ENHET (T++)"
